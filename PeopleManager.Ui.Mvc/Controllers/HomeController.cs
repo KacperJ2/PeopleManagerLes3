@@ -1,14 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PeopleManager.Ui.Mvc.Core;
 using PeopleManager.Ui.Mvc.Models;
 using System.Diagnostics;
 
 namespace PeopleManager.Ui.Mvc.Controllers
 {
+
+    
     public class HomeController : Controller
     {
+        private readonly PeopleManagerDataBase _database;
+      public HomeController(PeopleManagerDataBase database)
+        {
+            _database = database;
+        }
         public IActionResult Index()
         {
-            var people = GetPeople();
+            var people = _database.People;
             return View(people);
         }
 
