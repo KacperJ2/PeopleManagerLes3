@@ -32,5 +32,40 @@ namespace PeopleManager.Ui.Mvc.Controllers
             _database.SaveChanges(); 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var person = _database.People.Find(id);
+            {
+                if (person == null) 
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(person);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit([FromRoute]int id, Person person)
+        {
+            var dbPerson = _database.People.Find(id);
+            {
+                if(dbPerson == null)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            dbPerson.FirstName =person.FirstName;
+            dbPerson.LastName =person.LastName;
+            dbPerson.Email =person.Email;
+            dbPerson.Description =person.Description;
+
+
+            _database.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
