@@ -4,9 +4,7 @@ using PeopleManager.Ui.Mvc.Models;
 using System.Diagnostics;
 
 namespace PeopleManager.Ui.Mvc.Controllers
-{
-
-    
+{ 
     public class HomeController : Controller
     {
         private readonly PeopleManagerdbContext _DbContext;
