@@ -6,8 +6,8 @@ namespace PeopleManager.Ui.Mvc.Controllers
 {
     public class PeopleController : Controller
     {
-        private readonly PeopleManagerDataBase _database;
-        public PeopleController(PeopleManagerDataBase database)
+        private readonly PeopleManagerdbContext _database;
+        public PeopleController(PeopleManagerdbContext database)
         {
             _database = database;
         }

@@ -9,14 +9,14 @@ namespace PeopleManager.Ui.Mvc.Controllers
     
     public class HomeController : Controller
     {
-        private readonly PeopleManagerDataBase _database;
-      public HomeController(PeopleManagerDataBase database)
+        private readonly PeopleManagerdbContext _DbContext;
+      public HomeController(PeopleManagerdbContext DbContext)
         {
-            _database = database;
+            _DbContext = DbContext;
         }
         public IActionResult Index()
         {
-            var people = _database.People;
+            var people = _DbContext.People.ToList();
             return View(people);
         }
 
